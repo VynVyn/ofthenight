@@ -1,0 +1,57 @@
+tmdb_symfony:
+    api_key: 5e6ce9cdb85b1c1f2fb4b3f0c425fd80
+    cache:
+        enabled: true
+        adapter: cache.tmdb
+    log:
+        enabled: true
+        adapter: monolog.logger.tmdb
+        hydration:
+            enabled: true
+            with_hydration_data: false
+            adapter: null
+            listener: Tmdb\Event\Listener\Logger\LogHydrationListener
+            formatter: Tmdb\Formatter\Hydration\SimpleHydrationFormatter
+        request_logging:
+            enabled: true
+            adapter: null
+            listener: Tmdb\Event\Listener\Logger\LogHttpMessageListener
+            formatter: Tmdb\Formatter\HttpMessage\SimpleHttpMessageFormatter
+        response_logging:
+            enabled: true
+            adapter: null
+            listener: Tmdb\Event\Listener\Logger\LogHttpMessageListener
+            formatter: Tmdb\Formatter\HttpMessage\SimpleHttpMessageFormatter
+        api_exception_logging:
+            enabled: true
+            adapter: null
+            listener: Tmdb\Event\Listener\Logger\LogApiErrorListener
+            formatter: Tmdb\Formatter\TmdbApiException\SimpleTmdbApiExceptionFormatter
+        client_exception_logging:
+            enabled: true
+            adapter: null
+            listener: Tmdb\Event\Listener\Logger\LogHttpMessageListener
+            formatter: Tmdb\Formatter\HttpMessage\SimpleHttpMessageFormatter
+    options:
+        bearer_token: eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1ZTZjZTljZGI4NWIxYzFmMmZiNGIzZjBjNDI1ZmQ4MCIsInN1YiI6IjYwM2NjZGEyZWEzOTQ5MDA1MDE1NzFkMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.sgXSbRKdnzk4zJEDEVyVUY3DSTQs7LM6jGSchfQKKCA
+        http:
+            client: Symfony\Component\HttpClient\Psr18Client
+            request_factory: Nyholm\Psr7\Factory\Psr17Factory
+            response_factory: Nyholm\Psr7\Factory\Psr17Factory
+            stream_factory: Nyholm\Psr7\Factory\Psr17Factory
+            uri_factory: Nyholm\Psr7\Factory\Psr17Factory
+        secure: true
+        host: api.themoviedb.org/3
+        guest_session_token: null
+        event_dispatcher:
+            adapter: event_dispatcher
+        hydration:
+            event_listener_handles_hydration: false
+            only_for_specified_models: {  }
+        api_token: 5e6ce9cdb85b1c1f2fb4b3f0c425fd80 # you don't have to set this if you set it at the root level
+    session_token: null
+    repositories:
+        enabled: true
+    twig_extension:
+        enabled: true
+    disable_legacy_aliases: false

@@ -1,0 +1,9 @@
+monolog:
+    channels:
+        - tmdb
+    handlers:
+        tmdb:
+            type: stream
+            path: "%kernel.logs_dir%/php-tmdb--symfony.%kernel.environment%.log"
+            level: info
+            channels: ["tmdb"]
